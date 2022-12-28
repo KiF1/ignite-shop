@@ -49,7 +49,7 @@ export const ProductDetails = styled('div', {
 
   button: {
     marginTop: 'auto',
-    backgroundColor: '$green-500',
+    backgroundColor: '$green500',
     border: 0,
     color: '$White',
     borderRadius: 8,
@@ -58,8 +58,13 @@ export const ProductDetails = styled('div', {
     fontWeight: 'bold',
     fontSize: '$md',
 
-    '&:hover':{
-      backgroundColor: '$green-300'
+    '&:not(:disabled):hover':{
+      backgroundColor: '$green300'
     },
+
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    }
   }
 })
