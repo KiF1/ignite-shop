@@ -17,17 +17,17 @@ interface ProductProps {
 }
 
 export default function Home({ products }: ProductProps) {
-  const { addProductToCart } = useCart();
   const [emblaRef] = useEmblaCarousel({
     align: 'start',
     skipSnaps: false,
     dragFree: true,
   })
 
+  const { addProductToCart, checkIfProductAlreadyInCart } = useCart();
+
   function handleAddProductToCart(e: MouseEvent<HTMLButtonElement>, product: IProduct) {
     e.preventDefault();
     addProductToCart(product);
-    console.log(product);
   }
   return (
     <>
@@ -48,7 +48,7 @@ export default function Home({ products }: ProductProps) {
                         <strong>{product.name}</strong>
                         <span>{product.price}</span>
                       </div>
-                      <CartButton onClick={(e) => handleAddProductToCart(e, product)} color='green' size='large' />
+                      <CartButton onClick={(e) => handleAddProductToCart(e, product)} disabled={checkIfProductAlreadyInCart(product.id)} color='green' size='large' />
                     </footer>
                   </Product>
                 </Link>
@@ -78,6 +78,8 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(price.unit_amount! / 100),
+      numberPrice: price.unit_amount / 100,
+      defaultPriceId: price.id,
     }
   })
   return {
