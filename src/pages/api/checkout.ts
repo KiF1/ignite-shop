@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { IProduct } from "../../context/CartContext";
 import { stripe } from "../../lib/stripe";
 
-export default async function handler(
+export default async function request(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

@@ -36,17 +36,27 @@ export const SucessContainer = styled('main', {
   }
 })
 
+export const ImagesContainer = styled('section', {
+  display: 'flex',
+  alignContent: 'center',
+  marginBottom: '3rem',
+
+  'div + div': {
+    marginLeft: 'calc(-140px / 2)',
+  }
+});
+
 export const ImageContainer = styled('main', {
   width: '100%',
-  maxWidth: 130,
-  height: 145,
+  maxWidth: 140,
+  height: 140,
   background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
-  borderRadius: 8,
-  padding: '0.25rem',
+  borderRadius: '50%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  marginTop: '4rem',
+  position: 'relative',
+  boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.8)',
 
   img: {
     objectFit: 'cover',
