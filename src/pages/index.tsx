@@ -9,26 +9,26 @@ import useEmblaCarousel from "embla-carousel-react";
 import { CartButton } from "../componentes/CartButton";
 import { useCart } from "../hooks/useCart";
 import { IProduct } from "../context/CartContext";
+import { MouseEvent } from "react";
 
 
 interface ProductProps {
   products: IProduct[];
-  product: IProduct;
 }
 
-export default function Home({ products, product }: ProductProps) {
+export default function Home({ products }: ProductProps) {
   const { addProductToCart } = useCart();
-
-  function handleAddProductToCart(){
-    const productToAdd = {...product};
-    addProductToCart(productToAdd);
-    console.log(productToAdd);
-  }
   const [emblaRef] = useEmblaCarousel({
     align: 'start',
     skipSnaps: false,
     dragFree: true,
   })
+
+  function handleAddProductToCart(e: MouseEvent<HTMLButtonElement>, product: IProduct) {
+    e.preventDefault();
+    addProductToCart(product);
+    console.log(product);
+  }
   return (
     <>
     <Head>
@@ -48,7 +48,7 @@ export default function Home({ products, product }: ProductProps) {
                         <strong>{product.name}</strong>
                         <span>{product.price}</span>
                       </div>
-                      <CartButton onClick={handleAddProductToCart} color='green' size='large' />
+                      <CartButton onClick={(e) => handleAddProductToCart(e, product)} color='green' size='large' />
                     </footer>
                   </Product>
                 </Link>
