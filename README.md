@@ -9,13 +9,18 @@
 * Stripe
 * TypeScript
 
-<br />
+## Funcionalidades:
+- Adicionar uma camiseta ao carrinho
+- Ver informações de uma camiseta em especifico
+- Comprar uma camiseta
 
-<a href="https://ignite-shop.vercel.app/" target="_blank">
-<img src="https://user-images.githubusercontent.com/71772559/178192066-d52e0cf7-906e-4baa-80f3-4b49dde153c0.png" />
-</a>
+## Descrição:
+- Esse é um projeto onde visa colocar em prática os conhecimentos em React juntamente com Typescript, onde visa consumir a Api do Stripe, que tem como retorno os produtos cadastrados em uma loja. Esses produtos são acessados por uma chave secreta, onde é enviada pelo header da requisição.
+- Possui a funcionalidade de compra intregado ao Stripe, onde o proprio stripe faz a validação de dados e de compra do usuário.
+-Após a compra retorna os itens que foram comprados e o nome do usuário que comprou
 
-<a href="https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate" target="_blank">
-<img src="https://user-images.githubusercontent.com/71772559/178192253-4fe4757c-de57-4878-a38c-a483c25670b1.png" />
-</a>
+## Gostou do meu projeto? :D Entre em contato comigo! 
+- [Linkedin](https://www.linkedin.com/in/abner-santos-b195b8228/) <br/>
+- [Email: abner.kif1@gmail.com](mailto:abner.kif1@gmail.com)
+
 
