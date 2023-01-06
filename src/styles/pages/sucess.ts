@@ -41,12 +41,12 @@ export const ImagesContainer = styled('section', {
   alignContent: 'center',
   marginBottom: '3rem',
 
-  'div + div': {
+  "div + div": {
     marginLeft: 'calc(-140px / 2)',
   }
 });
 
-export const ImageContainer = styled('main', {
+export const ImageContainer = styled('div', {
   width: '100%',
   maxWidth: 140,
   height: 140,

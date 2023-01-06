@@ -8,6 +8,10 @@ import Head from "next/head";
 
 interface SucessProps {
   customerName: string;
+  product: {
+    name: string;
+    imageUrl: string;
+  };
   productsImages: string[];
 }
 
@@ -35,27 +39,31 @@ export default function Sucess({customerName, productsImages}: SucessProps){
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const sessionId = String(query.session_id);
-  if(!query.session_id){
+  if (!query.session_id) {
     return {
       redirect: {
         destination: "/",
         permanent: false,
-      }
-    }
+      },
+    };
   }
+
+  const sessionId = String(query.session_id);
+
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ['line_items', 'line_items.data.price.product'],
+    expand: ["line_items", "line_items.data.price.product"],
   });
+
   const customerName = session.customer_details.name;
-  const productImages = session.line_items.data.map(item => {
+  const productsImages = session.line_items.data.map((item) => {
     const product = item.price.product as Stripe.Product;
-    return product.images[0]
-  })
+    return product.images[0];
+  });
+
   return {
     props: {
       customerName,
-      productImages,
-    }
-  }
-}
+      productsImages,
+    },
+  };
+};
