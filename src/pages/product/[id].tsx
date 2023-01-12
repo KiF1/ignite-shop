@@ -6,6 +6,7 @@ import { Stripe } from 'stripe';
 import Head from 'next/head';
 import { useCart } from '../../hooks/useCart';
 import { IProduct } from '../../context/CartContext';
+import { useRouter } from "next/router";
 
 interface ProductProps{
   product: IProduct;
@@ -14,6 +15,12 @@ interface ProductProps{
 export default function Product({ product }: ProductProps) {
   const { checkIfProductAlreadyInCart,addProductToCart } = useCart();
   const itemInCart = checkIfProductAlreadyInCart(product.id);
+  
+  const { isFallback } = useRouter();
+  
+  if (isFallback) {
+    return <p>Loading...</p>;
+  }
 
   return(
     <>
