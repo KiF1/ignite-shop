@@ -4,23 +4,23 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { stripe } from '../../lib/stripe';
 import { Stripe } from 'stripe';
 import Head from 'next/head';
-import { useCart } from '../../hooks/useCart';
 import { IProduct } from '../../context/CartContext';
 import { useRouter } from "next/router";
+import { useCart } from '../../hooks/useCart';
 
 interface ProductProps{
   product: IProduct;
 }
 
 export default function Product({ product }: ProductProps) {
-  const { checkIfProductAlreadyInCart,addProductToCart } = useCart();
-  const itemInCart = checkIfProductAlreadyInCart(product.id);
-  
   const { isFallback } = useRouter();
   
   if (isFallback) {
     return <p>Loading...</p>;
   }
+
+  const { addProductToCart, checkIfProductAlreadyInCart } = useCart();
+  const itemInCart = checkIfProductAlreadyInCart(product.id);
 
   return(
     <>
