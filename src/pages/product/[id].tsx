@@ -14,12 +14,12 @@ interface ProductProps{
 
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter();
+  const { addProductToCart, checkIfProductAlreadyInCart } = useCart();
   
   if (isFallback) {
     return <p>Loading...</p>;
   }
 
-  const { addProductToCart, checkIfProductAlreadyInCart } = useCart();
   const itemInCart = checkIfProductAlreadyInCart(product.id);
 
   return(
